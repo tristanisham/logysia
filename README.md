@@ -17,7 +17,7 @@ import { Elysia } from "elysia";
 
 if (import.meta.main) {
     const app = new Elysia()
-        .use(logger())
+        .use(logger({logIP: true}))
         .get("/", ctx => "Hello, world!");
 }
 ```
