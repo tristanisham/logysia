@@ -10,7 +10,7 @@
     "elysia": "^0.7.0"
   },
   "description": "Logging middleware for Bun's Elysia web framework",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "main": "src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
