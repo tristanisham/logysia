@@ -1,5 +1,6 @@
 {
   "name": "@grotto/logysia",
+  "version": "0.1.1",
   "module": "src/index.ts",
   "type": "module",
   "devDependencies": {
@@ -10,7 +11,6 @@
     "elysia": "^0.7.0"
   },
   "description": "Logging middleware for Bun's Elysia web framework",
-  "version": "0.1.0",
   "main": "src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

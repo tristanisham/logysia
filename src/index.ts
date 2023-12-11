@@ -2,20 +2,27 @@ import Elysia from "elysia"
 import * as pc from "picocolors"
 import process from "process"
 
-export const logger = () =>
+interface Options {
+    logIP: boolean
+}
+
+
+export const logger = (options?: Options) =>
     new Elysia({
         name: "@grotto/logysia"
     })
         .onRequest((ctx) => {
-            ctx.store = {...ctx.store, beforeTime: process.hrtime.bigint()}
+            ctx.store = { ...ctx.store, beforeTime: process.hrtime.bigint() }
         })
         .onBeforeHandle((ctx) => {
             ctx.store = { ...ctx.store, beforeTime: process.hrtime.bigint() }
         })
         .onAfterHandle(({ request, store }) => {
             const logStr: string[] = []
-            if (request.headers.get("X-Forwarded-For")) {
-                logStr.push(`[${pc.cyan(request.headers.get("X-Forwarded-For"))}]`)
+            if (options !== undefined && options.logIP) {
+                if (request.headers.get("X-Forwarded-For")) {
+                    logStr.push(`[${pc.cyan(request.headers.get("X-Forwarded-For"))}]`)
+                }
             }
 
             logStr.push(methodString(request.method))
