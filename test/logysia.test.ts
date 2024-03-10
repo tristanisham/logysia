@@ -11,8 +11,8 @@ describe("Logysia", () => {
   beforeAll(() => {
     server = new Elysia()
       .use(logger({
-        logLocation: {
-          log(msg: string) {
+        writer: {
+          write(msg: string) {
             logs.push(msg)
           }
         }
