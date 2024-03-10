@@ -53,6 +53,18 @@ describe("Logysia", () => {
       expect(removeANSIColors(logs[i + 1])).toMatch(/POST \/sign \| \d+µs/)
     }
   })
+
+  it("PUT works", async () => {
+    const count = 5
+    for (let i = 0; i < count; i++) {
+      await app.put()
+    }
+
+    expect(logs.length).toBe(count);
+    for (let i = 0; i < count; i++) {
+      expect(removeANSIColors(logs[i])).toMatch(/PUT \/ Error 404 NOT_FOUND \| \d+µs/)
+    }
+  })
 })
 
 function removeANSIColors(input: string): string {
