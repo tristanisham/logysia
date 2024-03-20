@@ -26,10 +26,11 @@ export const logger = (options?: Options) => {
         .onRequest((ctx) => {
             ctx.store = { ...ctx.store, beforeTime: process.hrtime.bigint() }
         })
-        .onBeforeHandle((ctx) => {
+
+        .onBeforeHandle({ as: "global" }, (ctx) => {
             ctx.store = { ...ctx.store, beforeTime: process.hrtime.bigint() }
         })
-        .onAfterHandle(({ request, store }) => {
+        .onAfterHandle({ as: "global" }, ({ request, store }) => {
             const logStr: string[] = []
             if (options !== undefined && options.logIP) {
                 if (request.headers.get("X-Forwarded-For")) {
@@ -46,7 +47,7 @@ export const logger = (options?: Options) => {
 
             write(logStr.join(" "))
         })
-        .onError(({ request, error, store }) => {
+        .onError({ as: "global" }, ({ request, error, store }) => {
             const logStr: string[] = []
 
             logStr.push(pc.red(methodString(request.method)))

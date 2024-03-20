@@ -6,11 +6,12 @@
   "devDependencies": {
     "@elysiajs/eden": "^0.8.1",
     "bun-types": "^1.0.20",
+    "elysia": "^1.0.0-rc.11",
     "typescript": "^5.3.3"
   },
   "peerDependencies": {
     "typescript": "^5.3.3",
-    "elysia": "^0.8.3"
+    "elysia": "^1.0.0-rc.11"
   },
   "description": "Logging middleware for Bun's Elysia web framework",
   "main": "dist/index.js",
