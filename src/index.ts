@@ -14,6 +14,7 @@ export const logger = (options?: Options) =>
         .onRequest((ctx) => {
             ctx.store = { ...ctx.store, beforeTime: process.hrtime.bigint() }
         })
+
         .onBeforeHandle({ as: "global" }, (ctx) => {
             ctx.store = { ...ctx.store, beforeTime: process.hrtime.bigint() }
         })
