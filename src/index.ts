@@ -2,13 +2,25 @@ import Elysia from "elysia"
 import * as pc from "picocolors"
 import process from "process"
 
+interface Writer {
+  write: (message: string) => void
+}
+
+const consoleWriter: Writer = {
+    write(message: string) {
+      console.log(message)
+    }
+}
+
 interface Options {
-    logIP: boolean
+    logIP?: boolean,
+    writer?: Writer
 }
 
 
-export const logger = (options?: Options) =>
-    new Elysia({
+export const logger = (options?: Options) => {
+    const { write } = options?.writer || consoleWriter
+    return new Elysia({
         name: "@grotto/logysia"
     })
         .onRequest((ctx) => {
@@ -33,7 +45,7 @@ export const logger = (options?: Options) =>
 
             logStr.push(durationString(beforeTime))
 
-            console.log(logStr.join(" "))
+            write(logStr.join(" "))
         })
         .onError({ as: "global" }, ({ request, error, store }) => {
             const logStr: string[] = []
@@ -53,8 +65,9 @@ export const logger = (options?: Options) =>
 
             logStr.push(durationString(beforeTime))
 
-            console.log(logStr.join(" "))
+            write(logStr.join(" "))
         })
+}
 
 
 function durationString(beforeTime: bigint): string {

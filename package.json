@@ -4,6 +4,7 @@
   "module": "src/index.ts",
   "type": "module",
   "devDependencies": {
+    "@elysiajs/eden": "^0.8.1",
     "bun-types": "^1.0.20",
     "elysia": "^1.0.0-rc.11",
     "typescript": "^5.3.3"
