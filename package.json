@@ -1,6 +1,6 @@
 {
   "name": "@grotto/logysia",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "module": "src/index.ts",
   "type": "module",
   "devDependencies": {
