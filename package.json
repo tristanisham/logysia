@@ -5,9 +5,9 @@
   "type": "module",
   "devDependencies": {
     "@elysiajs/eden": "^0.8.1",
-    "bun-types": "^1.0.20",
-    "elysia": "^1.0.0-rc.11",
-    "typescript": "^5.3.3"
+    "bun-types": "^1.1.15",
+    "elysia": "^1.0.24",
+    "typescript": "^5.5.2"
   },
   "peerDependencies": {
     "typescript": "^5.3.3",
@@ -28,7 +28,7 @@
   ],
   "scripts": {
     "build": "rm -rf dist && bun build src/index.ts --outdir ./dist --target bun --minify --external elysia && tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "bun run --watch --hot tests/server.ts"
   },
   "repository": {
     "type": "git",
@@ -51,6 +51,6 @@
   },
   "homepage": "https://github.com/tristanisham/logysia#readme",
   "dependencies": {
-    "picocolors": "^1.0.0"
+    "picocolors": "^1.0.1"
   }
 }
