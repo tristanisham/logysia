@@ -3,7 +3,7 @@ import { Elysia } from "elysia";
 
 
 if (import.meta.main) {
-    const PORT = process.env.PORT || 3000
+    const PORT = process.env["PORT"] || 3000
     const app = new Elysia()
         // These are the default options. You do not need to copy this down
         .use(logger({
