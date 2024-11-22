@@ -26,7 +26,8 @@ if (import.meta.main) {
                 }
             }
         }))
-        .get("/", ctx => "Hello, world!");
+        .get("/", ctx => "Hello, world!")
+        .listen(3000);
 }
 ```
 
